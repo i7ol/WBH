@@ -1,0 +1,262 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,600;1,700&display=swap");
+root {
+  --header-height: 70px;
+  --main-bg: #d5d5d5;
+  --main-transition: all 0.3s ease;
+  --main-color: whitesmoke;
+  --main-font: "Open Sans", sans-serif;
+  --main-font-weight: 500;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: var(--main-font);
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: unset;
+}
+input {
+  outline: none;
+}
+.container {
+  max-width: 1240px;
+  margin: auto;
+}
+.row-flex {
+  display: flex;
+  justify-content: space-between;
+}
+.row-grid {
+  display: grid;
+  justify-content: space-between;
+}
+.heading-text {
+  font-weight: bolder;
+  padding: 12px;
+  position: relative;
+  margin: 20px 0;
+}
+.heading-text::after {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 2px;
+  height: 50%;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--main-bg);
+}
+.heading-text::before {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 100px;
+  height: 3px;
+  top: 50%;
+  bottom: 0;
+  left: 0;
+  background-color: black;
+  border-radius: 10px;
+}
+/*header----------------*/
+header.active {
+  background-color: var(--main-bg);
+}
+header {
+  height: var(--header-height);
+  border-bottom: 1px solid #ddd;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  transition: var(--main-transition);
+}
+header .row-flex {
+  align-items: center;
+}
+.header-logo img {
+  cursor: pointer;
+  width: 100px;
+}
+.header-nav nav ul {
+  display: flex;
+}
+.header-nav nav ul li {
+  padding: 0 10px;
+  transition: var(--main-transition);
+  cursor: pointer;
+}
+.header-nav nav ul li a {
+  line-height: var(--header-height);
+  font-size: smaller;
+}
+.header-nav nav ul li :hover {
+  background-color: var(--main-bg);
+}
+.header-search {
+  position: relative;
+}
+.header-search i {
+  position: absolute;
+  left: 6px;
+  top: 50%; /*tinh tien cac top 50% của div*/
+  transform: translateY(-50%); /*tịnh tiến 50% của kính núp*/
+  cursor: pointer;
+}
+.header-search input {
+  height: 30px;
+  border: 1px solid black;
+  padding-left: 24px;
+  border-radius: 15px;
+}
+.header-cart i {
+  font-size: large;
+  cursor: pointer;
+  position: relative;
+}
+.header-cart i::after {
+  position: absolute;
+  content: attr(number);
+  display: flex;
+  width: 20px;
+  height: 20px;
+  background-color: black;
+  border-radius: 50%;
+  top: -10px;
+  right: -10px;
+  color: var(--main-color);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: small;
+}
+/*slider*/
+.slider {
+  width: 100vw;
+  overflow: hidden;
+  aspect-ratio: 2.45/1; /*tu dong chinh anh*/
+  position: relative;
+}
+.slider-items {
+  position: relative;
+  transition: var(--main-transition);
+}
+.slider-item {
+  position: absolute;
+}
+.slider-item img {
+  width: 100vw; /*toan man hinh*/
+}
+.slider-arrow {
+  position: absolute;
+  z-index: 1;
+}
+.slider-arrow i {
+  cursor: pointer;
+  font-size: larger;
+}
+.slider-arrow {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+}
+/*hot-product*/
+.hot-products .row-grid-hot-products {
+  grid-template-columns: repeat(5, 19%);
+}
+.hot-product-item img {
+  width: 100%;
+}
+.hot-product-item > p {
+  font-weight: var(--main-font-weight);
+}
+.hot-product-item > span {
+  font-size: smaller;
+  font-weight: 300;
+}
+.hot-product-item-price {
+  margin-top: 6px;
+}
+.hot-product-item-price p {
+  font-weight: var(--main-font-weight);
+}
+.hot-product-item-price p span {
+  font-weight: 300;
+  font-size: small;
+  text-decoration: line-through;
+}
+/*footer*/
+footer {
+  margin-top: 50px;
+  padding: 50px 0 0 12px;
+  background-color: var(--main-bg);
+}
+.footer-item p:first-child {
+  font-weight: bolder;
+  margin-bottom: 12px;
+}
+.footer-item p {
+  font-weight: lighter;
+  line-height: 32px;
+}
+.footer-item footer .row-grid {
+  grid-template-columns: repeat(4, 25%);
+}
+/*responsive*/
+.header-bar-icon .header-logo-mobile {
+  display: none;
+}
+@media only screen and (max-width: 756px) {
+  .row-flex,
+  .row-grid {
+    padding: 0 12px;
+  }
+  /*header*/
+  header .row-flex {
+    height: 70px;
+  }
+  .header-nav {
+    position: fixed;
+    top: calc(-100% - var(--header-height));
+    left: 0;
+    width: 100vw;
+    background-color: black;
+    color: var(--main-color);
+    transition: var(--main-transition);
+  }
+  .header-nav.active {
+    top: var(--header-height);
+  }
+  .header-nav nav ul {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 0;
+  }
+  .header-logo-mobile img {
+    width: 70px;
+  }
+  .header-search {
+    display: none;
+  }
+  .header-logo {
+    display: none;
+  }
+  /*hotproduct*/
+  .hot-products .row-grid-hot-products {
+    grid-template-columns: repeat(2, 49%);
+    row-gap: 20px;
+  }
+  /*footer*/
+  footer .row-grid {
+    grid-template-columns: repeat(2, 49%);
+    row-gap: 20px;
+  }
+}
